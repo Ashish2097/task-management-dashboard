@@ -1,0 +1,22 @@
+.app {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+}
+
+.task-card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+input, textarea, button {
+  margin: 5px 0;
+}

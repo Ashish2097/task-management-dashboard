@@ -1,26 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from 'react';
+import useTasks from './hooks/useTasks';
+import TaskList from './components/TaskList';
+import TaskForm from './components/TaskForm';
+import Filters from './components/FIlters';
 
-function App() {
+const App: React.FC = () => {
+  const { tasks, addTask, editTask, deleteTask, loadTasks, search, updateDueDateSort } = useTasks();
+
+  useEffect(() => {
+    loadTasks();
+  }, [loadTasks]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <h1>Task Management Dashboard</h1>
+      <TaskForm onSubmit={addTask} />
+      <Filters search={search} updateDueDateSort={updateDueDateSort}/>
+      <TaskList tasks={tasks} onEdit={editTask} onDelete={deleteTask} />
     </div>
   );
-}
+};
 
 export default App;
