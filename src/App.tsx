@@ -17,7 +17,9 @@ const App: React.FC = () => {
       <TaskForm onSubmit={addTask} />
       <Filters search={search} updateDueDateSort={updateDueDateSort}/>
       <TaskList tasks={tasks} onEdit={editTask} onDelete={deleteTask} />
+      <div style={{ position: "absolute", bottom: "1rem", right: "1rem" }}>Made with <i className="bi bi-heart-fill text-danger"/> by Ashish </div>
     </div>
+
   );
 };
 
