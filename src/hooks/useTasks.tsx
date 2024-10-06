@@ -8,6 +8,7 @@ const useTasks = () => {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [searchString, setSearchString] = useState("");
   const [dueDateSort, setDueDateSort] = useState<SortValue | null>(null);
+  const [refresh, setRefresh] = useState(false);
 
   const loadTasks = useCallback(() => {
     let storedTasks = loadFromLocalStorage();
@@ -25,8 +26,10 @@ const useTasks = () => {
       storedTasks.sort(compFn[dueDateSort]("dueDate"));
     }
 
-    if (storedTasks) {
-      setTasks(storedTasks);
+    if (JSON.stringify(storedTasks) !== JSON.stringify(tasks)) {
+      if (storedTasks) {
+        setTasks(storedTasks);
+      }
     }
   }, [searchString, dueDateSort, tasks]);
 
